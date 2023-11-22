@@ -6,18 +6,20 @@ export class Negociacao{
     // #valor;
 
     // Declara atributos privados no TS
-    private _data: Date;
-    private _quantidade: number;
-    private _valor: number;
+    // private _data: Date;
+    // private _quantidade: number;
+    // private _valor: number;
 
-    constructor(data: Date,quantidade: number,valor: number){
-        this._data = data;
-        this._quantidade = quantidade;
-        this._valor = valor;
+    constructor(
+        private _data: Date,
+        private _quantidade: number,
+        public readonly valor: number // Dessa forma eu crio um parametro que é setado apenas uma vez e lido sempre
+        ){
     }
 
     get data(){
-        return this._data;
+        const data = new Date(this._data.getTime());
+        return data;
     }
 
     get volume(){
